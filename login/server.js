@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
+const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 const port = process.env.PORT||3000;
-
+app.use(bodyparser.json())
+app.use(bodyParser.urlencoded({extended:true}))
+//  app.use(session({
+//     secret:'secret',
+//     resave:"false",
+//     saveUnitialized: true
+//  }))
 app.set('view engine','ejs')
 
 //load static assets
@@ -15,3 +22,4 @@ app.get('/',(req,res)=>{
 })
 
 app.listen(port,()=>{console.log("Listening to the server on http://localhost.3000")})
+ 
